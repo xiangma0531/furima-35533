@@ -31,7 +31,6 @@
 | deli_days_id    | integer    | null: false                    |
 | price           | integer    | null: false                    |
 | user            | references | null: false, foreign_key: true |
-| purchase_record | references | null: false, foreign_key: true |
 
 ### Associations
 
@@ -40,11 +39,10 @@
 
 ## purchase_record テーブル
 
-| Column           | Type       | Options                        |
-| ---------------- | ---------- | ------------------------------ |
-| user_id          | references | null: false, foreign_key: true |
-| item_id          | references | null: false, foreign_key: true |
-| delivery_address | references | null: false, foreign_key: true |
+| Column | Type       | Options                        |
+| ------ | ---------- | ------------------------------ |
+| user   | references | null: false, foreign_key: true |
+| item   | references | null: false, foreign_key: true |
 
 ### Associations
 
@@ -59,7 +57,7 @@
 | postal_code     | string     | null: false                    |
 | pref_id         | integer    | null: false                    |
 | city            | string     | null: false                    |
-| address_num     | integer    | null: false                    |
+| address         | string     | null: false                    |
 | building        | string     |                                |
 | phone_num       | string     | null: false                    |
 | purchase_record | references | null: false, foreign_key: true |
