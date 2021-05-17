@@ -102,7 +102,7 @@
                 <mxCell id="38" value="building(string型)" style="text;strokeColor=#666666;fillColor=#f5f5f5;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;fontColor=#333333;" vertex="1" parent="33">
                     <mxGeometry y="130" width="200" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="39" value="phone_num(integer型, NOT NULL)" style="text;strokeColor=#666666;fillColor=#f5f5f5;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;fontColor=#333333;" vertex="1" parent="33">
+                <mxCell id="39" value="phone_num(string型, NOT NULL)" style="text;strokeColor=#666666;fillColor=#f5f5f5;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;fontColor=#333333;" vertex="1" parent="33">
                     <mxGeometry y="160" width="200" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="41" value="purchase_record(references型, &#10;NOT NULL, foreign_key: true)" style="text;strokeColor=#666666;fillColor=#f5f5f5;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;fontColor=#333333;" vertex="1" parent="33">
