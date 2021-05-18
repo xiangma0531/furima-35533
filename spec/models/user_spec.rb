@@ -91,7 +91,6 @@ RSpec.describe User, type: :model do
       end
 
       it 'first_nameが漢字・平仮名・カタカナ以外では登録できない' do
-        binding.pry
         @user.first_name = 'aa11'
         @user.valid?
         expect(@user.errors.full_messages).to include("First name is invalid. Input full-width characters.")
