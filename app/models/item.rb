@@ -1,12 +1,13 @@
 class Item < ApplicationRecord
   belongs_to :user
+  has_one_attached :image
 
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to :category_id
-  belongs_to :status_id
-  belongs_to :deli_change_id
-  belongs_to :pref_id
-  belongs_to :deli_days_id
+  belongs_to :category
+  belongs_to :status
+  belongs_to :deli_change
+  belongs_to :pref
+  belongs_to :deli_days
 
   with_options presence: true do
     validates :name
