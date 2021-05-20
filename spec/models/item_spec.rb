@@ -73,6 +73,18 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include('Price is invalid.')
       end
 
+      it 'priceが半角英数字で入力されていると保存されない' do
+        @item.price = '1000a'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price is invalid.")
+      end
+
+      it 'priceが半角英字で入力されていると保存されない' do
+        @item.price = 'abc'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price is invalid.")
+      end
+
       it 'priceが300未満だと保存されない' do
         @item.price = 299
         @item.valid?
