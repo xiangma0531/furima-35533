@@ -24,11 +24,11 @@
 | --------------- | ---------- | ------------------------------ |
 | name            | string     | null: false                    |
 | explain         | text       | null: false                    |
-| category        | integer    | null: false                    |
-| status          | integer    | null: false                    |
-| deli_change     | integer    | null: false                    |
-| pref            | integer    | null: false                    |
-| deli_days       | integer    | null: false                    |
+| category_id     | integer    | null: false                    |
+| status_id       | integer    | null: false                    |
+| deli_change_id  | integer    | null: false                    |
+| pref_id         | integer    | null: false                    |
+| deli_days_id    | integer    | null: false                    |
 | price           | integer    | null: false                    |
 | user            | references | null: false, foreign_key: true |
 
@@ -55,7 +55,7 @@
 | Column          | Type       | Options                        |
 | --------------- | ---------- | ------------------------------ |
 | postal_code     | string     | null: false                    |
-| pref            | integer    | null: false                    |
+| pref_id         | integer    | null: false                    |
 | city            | string     | null: false                    |
 | address         | string     | null: false                    |
 | building        | string     |                                |
