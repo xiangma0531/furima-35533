@@ -35,31 +35,31 @@ RSpec.describe Item, type: :model do
       it 'category_idが未選択だと保存されない' do
         @item.category_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category must be other than 1")
+        expect(@item.errors.full_messages).to include('Category must be other than 1')
       end
 
       it 'status_idが未選択だと保存されない' do
         @item.status_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Status must be other than 1")
+        expect(@item.errors.full_messages).to include('Status must be other than 1')
       end
 
       it 'deli_change_idが未選択だと保存されない' do
         @item.deli_change_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Deli change must be other than 1")
+        expect(@item.errors.full_messages).to include('Deli change must be other than 1')
       end
 
       it 'pref_idが未選択だと保存されない' do
         @item.pref_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Pref must be other than 1")
+        expect(@item.errors.full_messages).to include('Pref must be other than 1')
       end
 
       it 'deli_days_idが未選択だと保存されない' do
         @item.deli_days_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Deli days must be other than 1")
+        expect(@item.errors.full_messages).to include('Deli days must be other than 1')
       end
 
       it 'priceが空だと保存されない' do
@@ -71,25 +71,25 @@ RSpec.describe Item, type: :model do
       it 'priceが全角数字だと保存されない' do
         @item.price = '３０００'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is invalid.")
+        expect(@item.errors.full_messages).to include('Price is invalid.')
       end
 
       it 'priceが300未満だと保存されない' do
         @item.price = 299
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is invalid.")
+        expect(@item.errors.full_messages).to include('Price is invalid.')
       end
 
       it 'priceが9,999,999を超えると保存されない' do
-        @item.price = 10000000
+        @item.price = 10_000_000
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is invalid.")
+        expect(@item.errors.full_messages).to include('Price is invalid.')
       end
 
       it 'userが紐づいていないと保存されない' do
         @item.user = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("User must exist")
+        expect(@item.errors.full_messages).to include('User must exist')
       end
     end
   end
