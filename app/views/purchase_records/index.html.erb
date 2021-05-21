@@ -10,7 +10,7 @@
       <%= image_tag @purchase_record_delivery_address.image, class: 'buy-item-img' %>
       <div class='buy-item-right-content'>
         <h2 class='buy-item-text'>
-          <%= "商品名" %>
+          <%= @purchase_record_delivery_address.name %>
         </h2>
         <div class='buy-item-price'>
           <p class='item-price-text'>¥<%= @purchase_record_delivery_address.price %></p>
