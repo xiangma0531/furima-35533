@@ -9,7 +9,6 @@ class PurchaseRecordDeliveryAddress
     validates :city
     validates :address
     validates :phone_num, format: {with: /\A[0-9]{11}\z/, message: 'is invalid.'}
-    validates :purchase_record_id
   end
   validates :pref_id, numericality: {other_than: 1}
 
