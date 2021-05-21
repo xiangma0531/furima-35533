@@ -1,7 +1,8 @@
 class PurchaseRecordsController < ApplicationController
 
   def index
-    @purchase_record_delivery_address = Item.find(params[:item_id])
+    @item = Item.find(params[:item_id])
+    @purchase_record_delivery_address = PurchaseRecordDeliveryAddress.new
   end
 
   def create
@@ -16,7 +17,7 @@ class PurchaseRecordsController < ApplicationController
 
   private
   def purchase_record_params
-    item = Item.find(params[:id])
-    params.require(:purchase_record_delivery_address).permit(:postal_code, :pref_id, :city, :address, :building, :phone_num).merge(user_id: current_user.id, item_id: item.id)
+    item = Item.find(params[:item_id])
+    params.require(:purchase_record_delivery_address).permit(:postal_code, :pref_id, :city, :address, :building, :phone_num).merge(user_id: current_user.id, item_id: item_id)
   end
 end
