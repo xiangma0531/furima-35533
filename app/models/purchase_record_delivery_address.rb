@@ -12,4 +12,9 @@ class PurchaseRecordDeliveryAddress
     validates :purchase_record_id
   end
   validates :pref_id, numericality: {other_than: 1}
+
+  def save
+    purchase_record = PurchaseRecord.create(user_id: user_id, item_id: item_id)
+    DeliveryAddress.create(postal_code: postal_code, pref_id: pref_id, city: city, address: address, building: building, phone_num: phone_num, purchase_record_id: purchase_record.id)
+  end
 end
