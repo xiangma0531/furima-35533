@@ -1,4 +1,6 @@
 class PurchaseRecordsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :move_to_root_path
 
   def index
     @item = Item.find(params[:item_id])
@@ -30,5 +32,12 @@ class PurchaseRecordsController < ApplicationController
       card: purchase_record_params[:token],
       currency: 'jpy'
     )
+  end
+
+  def move_to_root_path
+    item = Item.find(params[:item_id])
+    if (current_user.id == item.user_id) || (PurchaseRecord.exists?(item.id))
+      redirect_to root_path
+    end
   end
 end
