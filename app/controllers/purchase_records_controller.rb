@@ -20,13 +20,16 @@ class PurchaseRecordsController < ApplicationController
   end
 
   private
+
   def purchase_record_params
     item = Item.find(params[:item_id])
-    params.require(:purchase_record_delivery_address).permit(:postal_code, :pref_id, :city, :address, :building, :phone_num).merge(user_id: current_user.id, item_id: item.id, token: params[:token])
+    params.require(:purchase_record_delivery_address).permit(:postal_code, :pref_id, :city, :address, :building, :phone_num).merge(
+      user_id: current_user.id, item_id: item.id, token: params[:token]
+    )
   end
 
   def pay_item
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
       amount: Item.find(purchase_record_params[:item_id]).price,
       card: purchase_record_params[:token],
@@ -36,8 +39,6 @@ class PurchaseRecordsController < ApplicationController
 
   def move_to_root_path
     item = Item.find(params[:item_id])
-    if (current_user.id == item.user_id) || (PurchaseRecord.exists?(item.id))
-      redirect_to root_path
-    end
+    redirect_to root_path if (current_user.id == item.user_id) || PurchaseRecord.exists?(item.id)
   end
 end

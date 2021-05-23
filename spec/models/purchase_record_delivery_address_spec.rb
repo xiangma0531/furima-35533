@@ -30,13 +30,13 @@ RSpec.describe PurchaseRecordDeliveryAddress, type: :model do
       it 'postal_codeが半角ハイフンを含んだ正しい形式でないと保存できないこと' do
         @purchase_record_delivery_address.postal_code = '1234567'
         @purchase_record_delivery_address.valid?
-        expect(@purchase_record_delivery_address.errors.full_messages).to include("Postal code is invalid. Include hyphen(-).")
+        expect(@purchase_record_delivery_address.errors.full_messages).to include('Postal code is invalid. Include hyphen(-).')
       end
 
       it 'pref_idを選択していないと保存できないこと' do
         @purchase_record_delivery_address.pref_id = 1
         @purchase_record_delivery_address.valid?
-        expect(@purchase_record_delivery_address.errors.full_messages).to include("Pref must be other than 1")
+        expect(@purchase_record_delivery_address.errors.full_messages).to include('Pref must be other than 1')
       end
 
       it 'cityが空では保存できないこと' do
@@ -54,24 +54,22 @@ RSpec.describe PurchaseRecordDeliveryAddress, type: :model do
       it 'phone_numが全角数字では保存できないこと' do
         @purchase_record_delivery_address.phone_num = '０９０１２３４５６７８'
         @purchase_record_delivery_address.valid?
-        expect(@purchase_record_delivery_address.errors.full_messages).to include("Phone num is invalid.")
+        expect(@purchase_record_delivery_address.errors.full_messages).to include('Phone num is invalid.')
       end
 
       it 'phone_numが半角英数字では保存できないこと' do
         @purchase_record_delivery_address.phone_num = '0901234567a'
         @purchase_record_delivery_address.valid?
-        expect(@purchase_record_delivery_address.errors.full_messages).to include("Phone num is invalid.")
+        expect(@purchase_record_delivery_address.errors.full_messages).to include('Phone num is invalid.')
       end
 
       it 'userが紐づいていないと保存できないこと' do
-        binding.pry
         @purchase_record_delivery_address.user_id = nil
         @purchase_record_delivery_address.valid?
         expect(@purchase_record_delivery_address.errors.full_messages).to include("User can't be blank")
       end
 
       it 'itemが紐づいていないと保存できないこと' do
-        binding.pry
         @purchase_record_delivery_address.item_id = nil
         @purchase_record_delivery_address.valid?
         expect(@purchase_record_delivery_address.errors.full_messages).to include("Item can't be blank")
