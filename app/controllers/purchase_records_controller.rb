@@ -3,7 +3,7 @@ class PurchaseRecordsController < ApplicationController
   before_action :move_to_root_path
 
   def index
-    @item = Item.find(params[:item_id])
+    set_item
     @purchase_record_delivery_address = PurchaseRecordDeliveryAddress.new
   end
 
@@ -14,7 +14,7 @@ class PurchaseRecordsController < ApplicationController
       @purchase_record_delivery_address.save
       redirect_to root_path
     else
-      @item = Item.find(params[:item_id])
+      set_item
       render :index
     end
   end
@@ -40,5 +40,9 @@ class PurchaseRecordsController < ApplicationController
   def move_to_root_path
     item = Item.find(params[:item_id])
     redirect_to root_path if (current_user.id == item.user_id) || PurchaseRecord.exists?(item.id)
+  end
+
+  def set_item
+    @item = Item.find(params[:item_id])
   end
 end
